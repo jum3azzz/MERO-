@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEROË — Nubian Heritage, Woven for Today</title>
+<meta name="description" content="MEROË sells Sudanese Nubian handcraft — hand-loomed textiles, leather, gold filigree, carved ebony — directly to the world. Every piece ships with its maker's story.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231C1611'/%3E%3Cpath d='M7 26 L16 6 L25 26 Z' fill='none' stroke='%23C9A227' stroke-width='1.6'/%3E%3C/svg%3E">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:   '#1C1611',
+          surface: '#241C15',
+          gold:  '#C9A227',
+          goldlight: '#E8C766',
+          cream: '#EDE6DA',
+          muted: '#9A8F7F',
+        },
+        fontFamily: {
+          serif: ['"Playfair Display"', 'Georgia', 'serif'],
+          sans:  ['Inter', 'system-ui', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  ::selection { background: #C9A227; color: #1C1611; }
+
+  /* Visible focus for keyboard users */
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid #E8C766;
+    outline-offset: 3px;
+  }
+
+  /* Cards: border brightens to full gold, lifts 4px, 200ms */
+  .card {
+    background: #241C15;
+    border: 1px solid rgba(201, 162, 39, 0.15);
+    border-radius: 12px;
+    transition: border-color 200ms ease, transform 200ms ease;
+  }
+  .card:hover { border-color: #C9A227; transform: translateY(-4px); }
+
+  /* Scroll-reveal: applied only when JS is present, so content is never
+     hidden if scripts fail. Disabled under prefers-reduced-motion. */
+  html.js .reveal { opacity: 0; transform: translateY(20px);
+    transition: opacity 600ms ease, transform 600ms ease; }
+  html.js .reveal.revealed { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    html.js .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* Nav: transparent over hero, solid after 100px of scroll */
+  #nav { transition: background-color 250ms ease, border-color 250ms ease; border-bottom: 1px solid transparent; }
+  #nav.scrolled { background-color: rgba(28, 22, 17, 0.96); border-bottom-color: rgba(201, 162, 39, 0.18); }
+
+  .wordmark { letter-spacing: 0.3em; padding-left: 0.15em; }
+
+  /* Photography: gold-tinted overlay keeps every image in the vitrine */
+  .photo { position: relative; overflow: hidden; border-radius: 8px; background: #241C15; }
+  .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .photo::after { content: ""; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(28,22,17,0.55), rgba(28,22,17,0.15) 55%, rgba(201,162,39,0.08)); }
+</style>
+</head>
+
+<body class="bg-ink text-cream font-sans font-light antialiased">
+<script>document.documentElement.classList.add('js');</script>
+
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-gold focus:text-ink focus:px-4 focus:py-2">Skip to content</a>
+
+<!-- ============ NAV ============ -->
+<header id="nav" class="fixed top-0 inset-x-0 z-40">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="#top" class="font-serif text-gold text-xl font-medium wordmark" aria-label="MEROË — back to top">MEROË</a>
+    <nav aria-label="Main" class="hidden md:flex items-center gap-8 text-sm tracking-widest uppercase">
+      <a href="#collections" class="text-cream/80 hover:text-goldlight transition-colors">Collections</a>
+      <a href="#provenance" class="text-cream/80 hover:text-goldlight transition-colors">Provenance</a>
+      <a href="#artisans" class="text-cream/80 hover:text-goldlight transition-colors">Artisans</a>
+      <a href="#journal" class="text-cream/80 hover:text-goldlight transition-colors">Journal</a>
+    </nav>
+    <!-- AR/EN TOGGLE ATTACHES HERE: a small button beside "Shop" switching
+         lang="ar" dir="rtl" and swapping the string table. Arabic is the
+         brand's second language; all copy below is keyed for translation. -->
+    <a href="#collections" class="bg-gold text-ink text-sm tracking-widest uppercase px-5 py-2.5 rounded-none hover:bg-goldlight transition-colors">Shop</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section id="top" class="min-h-screen flex items-center relative overflow-hidden">
+  <img src="img/hero.jpg" alt="The pyramids of the royal cemetery at Meroë, Sudan, at sunrise"
+       class="absolute inset-0 w-full h-full object-cover" style="object-position: center 38%;" fetchpriority="high">
+  <div class="absolute inset-0" aria-hidden="true"
+       style="background:
+         linear-gradient(to bottom, rgba(28,22,17,0.55), rgba(28,22,17,0.25) 45%, #1C1611 96%),
+         linear-gradient(to right, rgba(28,22,17,0.88) 20%, rgba(28,22,17,0.45) 60%, rgba(28,22,17,0.25));"></div>
+
+  <div class="max-w-6xl mx-auto px-6 pt-28 pb-24 w-full relative">
+    <div class="max-w-2xl">
+      <h1 class="font-serif text-gold font-medium wordmark text-6xl sm:text-7xl lg:text-8xl">MEROË</h1>
+      <p class="font-serif italic text-goldlight text-2xl sm:text-3xl mt-5">Nubian Heritage, Woven for Today</p>
+      <p class="text-cream/80 mt-6 max-w-md leading-relaxed">
+        Hand-loomed textiles, vegetable-tanned leather, gold filigree and carved ebony.
+        Made by Nubian cooperatives in Sudan. Sold directly to you.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href="#collections" class="bg-gold text-ink text-sm tracking-widest uppercase px-7 py-3.5 hover:bg-goldlight transition-colors">Explore the Collection</a>
+        <a href="#artisans" class="border border-gold text-gold text-sm tracking-widest uppercase px-7 py-3.5 hover:bg-gold hover:text-ink transition-colors">Our Artisans</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COLLECTIONS ============ -->
+<section id="collections" class="py-24 scroll-mt-16">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="reveal max-w-xl">
+      <p class="text-gold text-sm tracking-[0.3em] uppercase">Four crafts</p>
+      <h2 class="font-serif text-cream text-4xl sm:text-5xl mt-3">The Collections</h2>
+      <p class="text-muted mt-4">Each collection is one Sudanese craft tradition, made in small batches by the cooperative that keeps it alive.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-6 mt-14">
+
+      <article class="card reveal p-6">
+        <div class="photo aspect-[16/9]">
+          <img src="img/textile.jpg" loading="lazy" style="object-position: 75% 65%;"
+               alt="Raw cotton and striped hand-made textiles at the Wad Medani cotton market, Sudan">
+        </div>
+        <h3 class="font-serif text-goldlight text-2xl mt-6">Toub &amp; Textile</h3>
+        <p class="text-muted mt-2 leading-relaxed">Wraps, scarves and table linens in cotton and silk, loomed by hand in patterns Nubia has worn for centuries.</p>
+        <a href="#journal" class="inline-block text-gold text-sm tracking-widest uppercase mt-5 hover:text-goldlight transition-colors">View collection →</a>
+      </article>
+
+      <article class="card reveal p-6">
+        <div class="photo aspect-[16/9]">
+          <img src="img/leather.jpg" loading="lazy" style="object-position: center 30%;"
+               alt="Traditional Sudanese leather trappings with cowrie shells, Sudan Ethnographic Museum">
+        </div>
+        <h3 class="font-serif text-goldlight text-2xl mt-6">Leather Atelier</h3>
+        <p class="text-muted mt-2 leading-relaxed">Bags, sandals and journals in vegetable-tanned hide, cut and stitched by hand in the workshops of Omdurman.</p>
+        <a href="#journal" class="inline-block text-gold text-sm tracking-widest uppercase mt-5 hover:text-goldlight transition-colors">View collection →</a>
+      </article>
+
+      <article class="card reveal p-6">
+        <div class="photo aspect-[16/9]">
+          <img src="img/gold.jpg" loading="lazy"
+               alt="Gold winged pectoral found on the mummy of a Nubian king, Museum of Fine Arts, Boston">
+        </div>
+        <h3 class="font-serif text-goldlight text-2xl mt-6">Nubian Gold &amp; Silver</h3>
+        <p class="text-muted mt-2 leading-relaxed">Filigree in gold and silver, tracing motifs first worn by the kings and kandakas of Meroë.</p>
+        <a href="#journal" class="inline-block text-gold text-sm tracking-widest uppercase mt-5 hover:text-goldlight transition-colors">View collection →</a>
+      </article>
+
+      <article class="card reveal p-6">
+        <div class="photo aspect-[16/9]">
+          <img src="img/decor.jpg" loading="lazy" style="object-position: center 55%;"
+               alt="Hand-carved gourd vessels and a woven basket, Sudanese handicraft">
+        </div>
+        <h3 class="font-serif text-goldlight text-2xl mt-6">Ebony &amp; Brass Décor</h3>
+        <p class="text-muted mt-2 leading-relaxed">Bowls, trays and candle stands in dense carved wood and brass — made to be used, not just displayed.</p>
+        <a href="#journal" class="inline-block text-gold text-sm tracking-widest uppercase mt-5 hover:text-goldlight transition-colors">View collection →</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROVENANCE ============ -->
+<section id="provenance" class="py-24 scroll-mt-16 border-y border-gold/10 bg-surface/40">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+    <div class="reveal">
+      <p class="text-gold text-sm tracking-[0.3em] uppercase">The difference</p>
+      <h2 class="font-serif text-cream text-4xl sm:text-5xl mt-3">The Provenance Card</h2>
+      <p class="text-muted mt-6 leading-relaxed">
+        Every piece ships with its maker's story attached. A name, a cooperative,
+        a region, a craft. Not authenticity in the abstract — a person.
+      </p>
+      <p class="text-muted mt-4 leading-relaxed">
+        Wine has terroir. Craft has hands. When you buy the work, you learn whose
+        hands it passed through, and the card stays with the piece for as long
+        as it exists.
+      </p>
+      <figure class="mt-8">
+        <div class="photo aspect-[3/2]">
+          <img src="img/provenance.jpg" loading="lazy" style="object-position: center 60%;"
+               alt="A restored pyramid and its offering chapel in the royal cemetery at Meroë, Bajrawiya, Sudan">
+        </div>
+        <figcaption class="text-muted text-xs mt-3">The royal cemetery at Meroë — Bajrawiya, Sudan. The brand answers to this place.</figcaption>
+      </figure>
+    </div>
+
+    <!-- Provenance card, presented like a certificate -->
+    <div class="reveal">
+      <figure class="card p-8 sm:p-10 relative" aria-label="Example provenance card">
+        <div class="absolute inset-2 border border-gold/20 rounded-lg pointer-events-none" aria-hidden="true"></div>
+        <p class="text-gold text-xs tracking-[0.35em] uppercase text-center">Provenance</p>
+        <svg viewBox="0 0 40 26" class="w-10 mx-auto mt-4" aria-hidden="true" fill="none" stroke="#C9A227" stroke-width="1">
+          <path d="M8 24 L20 3 L32 24 Z"/><path d="M13 24 L20 12 L27 24"/>
+        </svg>
+        <dl class="mt-6 space-y-3 text-sm">
+          <div class="flex justify-between gap-6 border-b border-gold/10 pb-3">
+            <dt class="text-muted uppercase tracking-widest text-xs pt-0.5">Artisan</dt>
+            <dd class="font-serif text-cream text-lg text-right">Amna Idris Mahdi</dd>
+          </div>
+          <div class="flex justify-between gap-6 border-b border-gold/10 pb-3">
+            <dt class="text-muted uppercase tracking-widest text-xs pt-0.5">Cooperative</dt>
+            <dd class="text-cream text-right">Nubian Weavers of Karima</dd>
+          </div>
+          <div class="flex justify-between gap-6 border-b border-gold/10 pb-3">
+            <dt class="text-muted uppercase tracking-widest text-xs pt-0.5">Region</dt>
+            <dd class="text-cream text-right">Northern State, Sudan</dd>
+          </div>
+          <div class="flex justify-between gap-6 border-b border-gold/10 pb-3">
+            <dt class="text-muted uppercase tracking-widest text-xs pt-0.5">Craft</dt>
+            <dd class="text-cream text-right">Hand-loom weaving</dd>
+          </div>
+          <div class="flex justify-between gap-6">
+            <dt class="text-muted uppercase tracking-widest text-xs pt-0.5">Years of practice</dt>
+            <dd class="text-cream text-right">26</dd>
+          </div>
+        </dl>
+        <figcaption class="font-serif italic text-muted text-sm text-center mt-7">
+          "The pattern is my grandmother's. The tension is mine."
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SEASONAL DROPS ============ -->
+<section id="drops" class="py-24 scroll-mt-16">
+  <div class="max-w-3xl mx-auto px-6 text-center">
+    <div class="reveal">
+      <p class="text-gold text-sm tracking-[0.3em] uppercase">Small batch, by design</p>
+      <h2 class="font-serif text-cream text-4xl sm:text-5xl mt-3">Seasonal Drops</h2>
+      <p class="text-muted mt-6 leading-relaxed">
+        We do not hold inventory year-round. Collections arrive in small batches,
+        timed to the Sudanese cultural calendar — Eid, the harvest, the cool season.
+        When a drop sells out, it is gone. The scarcity is real because the
+        production is.
+      </p>
+    </div>
+
+    <div class="reveal card mt-12 p-8 sm:p-10">
+      <p class="text-muted text-sm tracking-widest uppercase">Next: The Harvest Drop</p>
+      <div id="countdown" class="mt-6 grid grid-cols-4 gap-3 sm:gap-6" role="timer" aria-label="Time until the Harvest Drop opens">
+        <div><span id="cd-days" class="font-serif text-goldlight text-4xl sm:text-5xl block">–</span><span class="text-muted text-xs tracking-widest uppercase mt-1 block">Days</span></div>
+        <div><span id="cd-hours" class="font-serif text-goldlight text-4xl sm:text-5xl block">–</span><span class="text-muted text-xs tracking-widest uppercase mt-1 block">Hours</span></div>
+        <div><span id="cd-mins" class="font-serif text-goldlight text-4xl sm:text-5xl block">–</span><span class="text-muted text-xs tracking-widest uppercase mt-1 block">Minutes</span></div>
+        <div><span id="cd-secs" class="font-serif text-goldlight text-4xl sm:text-5xl block">–</span><span class="text-muted text-xs tracking-widest uppercase mt-1 block">Seconds</span></div>
+      </div>
+      <p class="text-muted text-sm mt-7">Opens 15 September 2026, 18:00 GMT.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PUBLIC IMPACT LEDGER ============ -->
+<section id="artisans" class="py-24 scroll-mt-16 border-y border-gold/10 bg-surface/40">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="reveal max-w-xl">
+      <p class="text-gold text-sm tracking-[0.3em] uppercase">Transparency</p>
+      <h2 class="font-serif text-cream text-4xl sm:text-5xl mt-3">Public Impact Ledger</h2>
+      <p class="text-muted mt-4 leading-relaxed">
+        A share of every sale funds artisan training. This ledger is public,
+        itemized, and updated with every drop. If we spent it, it is here.
+      </p>
+    </div>
+
+    <div class="reveal mt-12 overflow-x-auto">
+      <table class="w-full text-sm border border-gold/15">
+        <caption class="sr-only">Artisan-training fund disbursements, 2026 to date</caption>
+        <thead>
+          <tr class="text-left text-xs tracking-widest uppercase text-gold border-b border-gold/15">
+            <th scope="col" class="px-5 py-4 font-medium">Date</th>
+            <th scope="col" class="px-5 py-4 font-medium">Cooperative</th>
+            <th scope="col" class="px-5 py-4 font-medium">Amount</th>
+            <th scope="col" class="px-5 py-4 font-medium">Purpose</th>
+          </tr>
+        </thead>
+        <tbody class="text-cream/90">
+          <tr class="border-b border-gold/10">
+            <td class="px-5 py-4 whitespace-nowrap text-muted">12 Mar 2026</td>
+            <td class="px-5 py-4">Nubian Weavers of Karima</td>
+            <td class="px-5 py-4 text-goldlight whitespace-nowrap">$1,850</td>
+            <td class="px-5 py-4 text-muted">Two replacement looms; natural-dye workshop, twelve weavers</td>
+          </tr>
+          <tr class="border-b border-gold/10">
+            <td class="px-5 py-4 whitespace-nowrap text-muted">28 Apr 2026</td>
+            <td class="px-5 py-4">Omdurman Leather Guild</td>
+            <td class="px-5 py-4 text-goldlight whitespace-nowrap">$940</td>
+            <td class="px-5 py-4 text-muted">Tanning-safety equipment; stipends for six apprentices</td>
+          </tr>
+          <tr class="border-b border-gold/10">
+            <td class="px-5 py-4 whitespace-nowrap text-muted">09 Jun 2026</td>
+            <td class="px-5 py-4">Meroë Silversmiths Collective</td>
+            <td class="px-5 py-4 text-goldlight whitespace-nowrap">$1,200</td>
+            <td class="px-5 py-4 text-muted">Filigree master class, three-week residency</td>
+          </tr>
+          <tr>
+            <td class="px-5 py-4 whitespace-nowrap text-muted">02 Jul 2026</td>
+            <td class="px-5 py-4">Atbara Ebony Carvers</td>
+            <td class="px-5 py-4 text-goldlight whitespace-nowrap">$610</td>
+            <td class="px-5 py-4 text-muted">Chisel sets; kiln-drying rack for cured ebony</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="border-t border-gold/15 text-cream">
+            <td class="px-5 py-4 text-xs tracking-widest uppercase text-muted" colspan="2">Disbursed 2026 to date</td>
+            <td class="px-5 py-4 text-goldlight whitespace-nowrap font-medium">$4,600</td>
+            <td class="px-5 py-4"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHO IT'S FOR ============ -->
+<section class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="reveal max-w-xl">
+      <p class="text-gold text-sm tracking-[0.3em] uppercase">Who it's for</p>
+      <h2 class="font-serif text-cream text-4xl sm:text-5xl mt-3">Made for four kinds of buyer</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mt-14">
+      <div class="reveal">
+        <h3 class="font-serif text-goldlight text-xl">The diaspora</h3>
+        <p class="text-muted mt-3 text-sm leading-relaxed">Sudanese and African buyers abroad who want homeland goods that are actually from home.</p>
+      </div>
+      <div class="reveal">
+        <h3 class="font-serif text-goldlight text-xl">Conscious luxury</h3>
+        <p class="text-muted mt-3 text-sm leading-relaxed">Shoppers who ask where a thing was made, and by whom, before they ask the price.</p>
+      </div>
+      <div class="reveal">
+        <h3 class="font-serif text-goldlight text-xl">Designers &amp; hospitality</h3>
+        <p class="text-muted mt-3 text-sm leading-relaxed">Interior designers and boutique hotels sourcing statement pieces no one else will have.</p>
+      </div>
+      <div class="reveal">
+        <h3 class="font-serif text-goldlight text-xl">Cultural collectors</h3>
+        <p class="text-muted mt-3 text-sm leading-relaxed">Collectors drawn to Nubian jewelry and art, and to the centuries of work behind it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EMAIL CAPTURE ============ -->
+<section id="journal" class="py-24 scroll-mt-16 border-t border-gold/10 bg-surface/40">
+  <div class="max-w-xl mx-auto px-6 text-center reveal">
+    <h2 class="font-serif text-cream text-3xl sm:text-4xl">Be there when it opens</h2>
+    <p class="text-muted mt-4">One email when the next drop opens. No newsletter, no discounts, nothing else.</p>
+    <form id="signup" class="mt-8 flex flex-col sm:flex-row gap-3" novalidate>
+      <label for="email" class="sr-only">Email address</label>
+      <input id="email" name="email" type="email" required autocomplete="email"
+             placeholder="you@example.com"
+             class="flex-1 bg-ink border border-gold/25 text-cream placeholder-muted px-5 py-3.5 focus:border-gold focus:outline-none">
+      <button type="submit" class="bg-gold text-ink text-sm tracking-widest uppercase px-7 py-3.5 hover:bg-goldlight transition-colors">Notify me</button>
+    </form>
+    <p id="signup-note" class="text-goldlight text-sm mt-4" hidden>Noted. You will hear from us once, when the drop opens.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="border-t border-gold/15">
+  <div class="max-w-6xl mx-auto px-6 py-14">
+    <div class="flex flex-col md:flex-row md:items-start justify-between gap-10">
+      <div>
+        <p class="font-serif text-gold text-2xl wordmark">MEROË</p>
+        <p class="font-serif italic text-muted mt-3">Where Nubian heritage meets the modern shopping cart.</p>
+      </div>
+      <nav aria-label="Footer" class="flex flex-col gap-2 text-sm">
+        <a href="#collections" class="text-cream/70 hover:text-goldlight transition-colors">Collections</a>
+        <a href="#provenance" class="text-cream/70 hover:text-goldlight transition-colors">Provenance</a>
+        <a href="#artisans" class="text-cream/70 hover:text-goldlight transition-colors">Artisans</a>
+        <a href="#journal" class="text-cream/70 hover:text-goldlight transition-colors">Journal</a>
+      </nav>
+      <div class="flex gap-5" aria-label="Social media">
+        <a href="#" aria-label="Instagram" class="text-cream/60 hover:text-goldlight transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.8" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" aria-label="TikTok" class="text-cream/60 hover:text-goldlight transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 4v9.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c.5 2.5 2 4 4.5 4.5"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook" class="text-cream/60 hover:text-goldlight transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 8h3V5h-3a4 4 0 0 0-4 4v2H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="text-muted text-xs mt-12 pt-6 border-t border-gold/10 space-y-2">
+      <p>© 2026 MEROË. Khartoum · Omdurman · the world.</p>
+      <p class="text-muted/70">
+        Photography via Wikimedia Commons: Meroë at sunrise © Valerian Guillot (CC BY 2.0) ·
+        Bajrawiya pyramids © Ahmed Amir (CC BY-SA 4.0) ·
+        Wad Medani cotton market © Bertramz (CC BY 3.0) ·
+        Baggara trappings, Sudan Ethnographic Museum © Imogen Thurbon (CC BY 4.0) ·
+        Nubian royal pectoral, MFA Boston © Hans Ollermann (CC BY-SA 2.0, cropped) ·
+        Carved gourds © Hassan Hassoon (CC BY-SA 4.0).
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --- Nav: solid after 100px --- */
+  var nav = document.getElementById('nav');
+  function onScroll() { nav.classList.toggle('scrolled', window.scrollY > 100); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* --- Scroll reveal: once each, disabled under reduced motion --- */
+  var targets = document.querySelectorAll('.reveal');
+  if (reducedMotion || !('IntersectionObserver' in window)) {
+    targets.forEach(function (el) { el.classList.add('revealed'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    targets.forEach(function (el) { io.observe(el); });
+  }
+
+  /* --- Countdown to the Harvest Drop --- */
+  var DROP_AT = Date.UTC(2026, 8, 15, 18, 0, 0); // 15 Sep 2026, 18:00 GMT
+  var cd = {
+    days: document.getElementById('cd-days'),
+    hours: document.getElementById('cd-hours'),
+    mins: document.getElementById('cd-mins'),
+    secs: document.getElementById('cd-secs')
+  };
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+  function tick() {
+    var left = DROP_AT - Date.now();
+    if (left <= 0) {
+      document.getElementById('countdown').innerHTML =
+        '<p class="col-span-4 font-serif text-goldlight text-3xl">The drop is open.</p>';
+      clearInterval(timer);
+      return;
+    }
+    cd.days.textContent = String(Math.floor(left / 86400000));
+    cd.hours.textContent = pad(Math.floor(left / 3600000) % 24);
+    cd.mins.textContent = pad(Math.floor(left / 60000) % 60);
+    cd.secs.textContent = pad(Math.floor(left / 1000) % 60);
+  }
+  tick();
+  var timer = setInterval(tick, 1000);
+
+  /* --- Email capture --- */
+  var form = document.getElementById('signup');
+  var note = document.getElementById('signup-note');
+  var email = document.getElementById('email');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!email.checkValidity()) { email.reportValidity(); return; }
+    form.hidden = true;
+    note.hidden = false;
+  });
+})();
+</script>
+</body>
+</html>
